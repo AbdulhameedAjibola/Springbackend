@@ -28,6 +28,8 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+
+
     @PostMapping("/login")
     public String authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -54,15 +56,14 @@ public class AuthController {
         return jwt;
     }
 
-
-
-
     @PostMapping("/register")
     public String registerUser(@RequestBody RegisterRequest registerRequest) {
-
-
         return authService.registerUser(registerRequest);
     }
+
+
+
+
 
     private String generateAnonymousId() {
         SecureRandom random = new SecureRandom();
